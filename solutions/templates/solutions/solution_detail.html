@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+    <div class="jumbotron" style="margin-top: 2rem">
+        <h1 class="h4">{{ object.title }} for <a
+                href="{% url 'challenges_detail' object.challenge.id %}">{{ object.challenge.title }}</a></h1>
+        <p class="lead">Created by <a href="
+            {% if user == object.developer.user %}
+                {% url 'profile' %}
+            {% else %}
+                {% url 'specific_profile' object.developer %}
+            {% endif %}">{{ object.developer }}</a> on {{ object.date_created|date:"d F, Y" }} with accuracy <b>{{ object.accuracy }}</b></p>
+        {% if object.developer == user.developer %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'solutions_update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'solutions_delete' object.id %}">Delete</a>
+            </div>
+        {% endif %}
+        {% if object.challenge.clinician == user.clinician %}
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'solutions_evaluate' object.id %}">Evaluate</a>
+        {% endif %}
+        <hr class="my-4">
+
+        <p>{{ object.description|safe }}</p>
+
+        {% if object.solution_data.url != null %}
+            <a class="btn btn-primary" href="{{ object.solution_data.url }}" download>Download Solution</a>
+        {% endif %}
+
+        {% if object.solution_notebook.url != null %}
+            <a class="btn btn-primary" href="{{ object.solution_notebook.url }}" download>Download Notebook</a>
+            <a class="btn btn-primary" href="{{ object.solution_notebook_htmlver.url }}">View Notebook</a>
+        {% endif %}
+    </div>
+{% endblock %}

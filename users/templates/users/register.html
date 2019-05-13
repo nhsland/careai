@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="col-md-8 offset-md-2" style="margin-top: 2rem">
+        <h2 class="text-center">Sign up for a free account right now!</h2>
+
+        <p class="lead text-center"><strong>Select below the type of account you want to create:</strong></p>
+
+        <div class="text-center">
+            <a href="{% url 'clinician_register' %}" class="btn btn-outline-info btn-xlarge" role="button" style="margin:1rem">Clinician</a>
+            
+            <a href="{% url 'developer_register' %}" class="btn btn-outline-info btn-xlarge" role="button" style="margin:1rem">Developer</a>
+        </div>
+    </div>
+{% endblock %}

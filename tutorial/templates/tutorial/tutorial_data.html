@@ -1,0 +1,16 @@
+{% extends 'tutorial/tutorial_detail.html' %}
+
+{% block detailedinfo %}
+
+    <div class="container" style="margin-top: 2rem; padding-left: 0">
+        {% if object.data.url != null %}
+{#            {% if user.is_admin or user.is_clinician %}#}
+                <a class="btn btn-primary" href="{{ object.data.url }}" download>Download Data</a>
+{#            {% endif %}#}
+            {% else %}
+            <h3>No Data Given</h3>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

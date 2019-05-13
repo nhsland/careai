@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="media">
+                <img style="width:200px;height:200px" class="img-thumbnail" src="{{ req_user.profile.image.url }}">
+                <div class="media-body" style="margin-left: 1rem">
+                    <h2 class="account-heading mt-4">{{ req_user.username }}</h2>
+                    <h4 class="account-heading mt-4">  {{ req_user.email }}</h4>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-6">
+
+            {% if req_user.is_clinician %}
+                <br>
+                <div class="card">
+                    <div class="card-header">Challenges I Created</div>
+
+                    <ul class="list-group list-group-flush">
+                        {% for interest in interests %}
+                            <li class="list-group-item"><a href="{% url 'challenges_detail' interest.id %}">{{ interest.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {% if req_user.is_developer %}
+                <br>
+                <div class="card">
+                    <div class="card-header">Challenges I Participated In</div>
+
+                    <ul class="list-group list-group-flush">
+                        {% for interest in interests %}
+                            <li class="list-group-item"><a href="{% url 'challenges_detail' interest.id %}">{{ interest.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+        {% if req_user ==  request.user %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Information</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+
+
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+                <a class="btn btn-outline-warning" href="{% url 'password_reset' %}">Require password reset</a>
+            </div>
+
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}

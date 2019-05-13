@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="col-md-10 offset-md-1">
+        {% if user.is_admin or user.is_developer %}
+            <p> Commented Successfully! </p>
+        {% else %}
+        
+         <p> Valid for login developers only </p>
+
+        {% endif %}
+           
+    </div>
+  
+
+
+{% endblock %}

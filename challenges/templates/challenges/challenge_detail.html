@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% load template_methods %}
+
+{% block content %}
+    <div class="card" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; margin-top: 2rem">
+        <div class="card-body row">
+            <div class="col-md-9">
+                <h1>{{ object.title }}</h1>
+                <p>{{ object.brief }}</p>
+                <p class="lead">Created by <a href="
+                {% if user == object.clinician.user %}
+                    {% url 'profile' %}
+                {% else %}
+                    {% url 'specific_profile' object.clinician %}
+                {% endif %}">{{ object.clinician }}</a> on {{ object.date_created|date:"d F, Y" }}
+                </p>
+            </div>
+            <div class="col-md-3" style="float: right">
+                <div style="flex-direction: column;">
+                    <h5>Target Cost Saving</h5>
+                    <h4>£{{ challenge.award|safe }}</h4>
+                    <h6>{{ challenge.developers.all.count }} team(s)</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card top-rect">
+        <ul style="padding-left: 1rem; float: left">
+            <li class="masterdetail"><a href="{% url 'challenges_overview' object.pk %}">Overview</a></li>
+            <li class="masterdetail"><a href="{% url 'challenges_data' object.pk %}">Data</a></li>
+            <li class="masterdetail"><a href="{% url 'challenges_solutions' object.pk %}">Solutions</a></li>
+            <li class="masterdetail"><a href="{% url 'challenges_rules' object.pk %}">Rules</a></li>
+            {% if user.is_developer %}
+                {% user_is_in_challenge object.pk user.developer.pk as userParticipation %}
+                {% if userParticipation %}
+                    <a class="btn btn-danger btn-lg" href="{% url 'leave' object.id %}" role="button"
+                       style="float: right; margin-top: 0.8rem; margin-right: 0.5rem">Leave
+                        Challenge</a>
+                {% else %}
+                    <a class="btn btn-primary btn-lg" href="{% url 'participate' object.id %}"
+                       role="button" style="float: right; margin-top: 0.8rem; margin-right: 0.5rem">Participate</a>
+                {% endif %}
+            {% endif %}
+        </ul>
+
+    </div>
+
+    {% block detailedinfo %}
+    {% endblock %}
+
+
+    {% if object.clinician == user.clinician %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'challenges_update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'challenges_delete' object.id %}">Delete</a>
+        </div>
+    {% endif %}
+
+    <hr class="my-4">
+
+    <div>
+        {% if userParticipation %}
+            <a class="btn btn-info btn-lg" href="http://51.140.73.178/hub/user/{{ user.username }}/lab"
+               target="_blank"
+               role="button">To Jupyter Notebook</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'solutions_create' object.pk %}"
+               role="button">Submit Solution</a>
+
+            <hr class="my-4">
+        {% endif %}
+
+    </div>
+
+{% endblock %}

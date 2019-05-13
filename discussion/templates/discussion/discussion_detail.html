@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {#    render discussion card#}
+    <div class="card mb-2" style="padding: 0.5rem;margin-top: 2rem">
+        <div class="card-body">
+            {% load static %}
+            <img src="{% static "pictures/pic_qa.png" %}"
+                 style="float:left;width:2.3rem;height:1.7rem; margin-right:0.5rem"/>
+
+            <h4><a class="card-title">{{ object.title }}</a></h4>
+
+            <p class="card-text"> Posted by {{ object.author }} on {{ object.date_posted }}
+            <hr class="featurette-divider">
+            {{ object.content|safe }} </p>
+        </div>
+    </div>
+
+    {#    render all comments for this discussion post#}
+    {% for comment in comments %}
+        {% if object.title == comment.discussion.title %}
+            <div class="card mb-2" style="padding: 0.5rem;">
+                <div class="card-subtitle"></div>
+                <div class="card-body">
+                    {% load static %}
+                    <img src="{% static "pictures/comment.jpg" %}"
+                         style="float:left;width:2.3rem;height:1.7rem; margin-right:0.5rem"/>
+                    <h5>Comment by<a href="
+                            {% if user == comment.commenter %}
+                                {% url 'profile' %}
+                            {% else %}
+                                {% url 'specific_profile' comment.commenter %}
+                            {% endif %}">{{ comment.commenter }}</a> on {{ comment.date_commented }}</h5>
+                    <hr class="featurette-divider">
+                    <div class="card-text" style="padding:0.5rem">{{ comment.content }} </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {#    comment form section#}
+    <div style="padding-top:1rem">
+        {% if user.is_admin or user.is_developer %}
+            <div class="content-section">
+                <form action="{% url 'discussion_detail' object.id %}" method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" value="test" style="font-size:1rem;margin-top:1.5rem">Comment</button>
+                </form>
+
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'challenges/challenge_detail.html' %}
+
+{% block detailedinfo %}
+
+    <div class="container" style="padding: 0; margin-top: 1rem">
+
+        <script>$(document).ready(function () { //to provide sort function
+            $('#solution_table').DataTable();
+        });</script>
+
+        <table id="solution_table" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
+                <th>Solution</th>
+                <th>Date Created</th>
+                <th>Accuracy</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for solution in challenge.solution_set.all %}
+                <tr>
+                    <td><a
+                            href="{% url 'solutions_detail' solution.id %}">{{ solution.title }}</a> by <a href="
+                    {% if user == solution.developer.user %}
+                        {% url 'profile' %}
+                    {% else %}
+                        {% url 'specific_profile' solution.developer %}
+                    {% endif %}">{{ solution.developer }}</a>
+
+                    </td>
+                    <td>{{ solution.date_created }}</td>
+                    <td>{{ solution.accuracy }}%</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+{% endblock %}

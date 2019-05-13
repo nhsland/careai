@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="col-md-10 offset-md-1">
+{#        {% if user.is_admin or user.is_developer %}#}
+            <div class="content-section">
+                <form enctype="multipart/form-data" method="post" novalidate>
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Evaluate the solution</legend>
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Confirm</button>
+                    </div>
+                </form>
+            </div>
+{#        {% else %}#}
+{#            <legend class="border-bottom mb-4">You are not allowed to modify solutions.</legend>#}
+{#        {% endif %}#}
+    </div>
+{% endblock %}

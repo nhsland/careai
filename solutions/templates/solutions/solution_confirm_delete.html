@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    {% if user.is_admin or user.is_developer %}
+        <div class="content-section">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Are you sure you want to delete Solution {{ object.title }} ?
+                    </legend>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    <a class="btn badge-secondary" href="{% url 'solutions_detail' object.id %}"
+                       style="margin-left: 2rem">Cancel</a>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <legend class="border-bottom mb-4">You are not allowed to modify solutions.</legend>
+    {% endif %}
+{% endblock %}

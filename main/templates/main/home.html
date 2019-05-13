@@ -1,0 +1,130 @@
+{% extends 'main/base.html' %}
+
+{% block banner %}
+{#    {% load static %}#}
+{#  <div style="background-image: url('{% static "pic/sky.jpg"%}')">#}
+{#    <div class="container">#}
+{#      <h1 class="display-3" style="color:#1A6FA8"><strong>Hello, {{ user }}</strong></h1>#}
+{#      <br>#}
+{#      <h2 class="display-6" style="color:#014B7C">Welcome to CareAI PlayGround, solve challenges and have fun!</h2>#}
+{#      <br>#}
+{##}
+{#    </div>#}
+{#  </div>#}
+        {% load static %}
+    <div class="container"
+         style="max-height:170px;margin-bottom:2rem;max-width:10000px;height:10rem;background-image: url('{% static "pic/sky.jpg" %}')">
+        <h2 style="padding:3.5rem 3.5rem;color:#014B7C" class="display-5"><strong>CareAI PlayGround: a platform for AI challenges</strong></h2>
+    </div>
+{% endblock %}
+
+{% block content %}
+<!-- <div class="col-lg-8 col-md-7 col-sm-6">
+        <h1>Welcome to CareAI Playground, {{ user }}</h1>
+        <p class="lead">Where you can require, build and run models</p>
+    </div> -->
+
+
+
+
+<div class="row featurette" style="padding:2rem 0">
+      <div class="col-md-5">
+        {% load static %}
+        <h2 class="featurette-heading" style="padding-top:3rem"> <img src="{% static "pic/icon1.svg" %}"
+                         style="float:left;width:2.3rem;height:2.3rem; margin-right:0.5rem"/>
+        Challenges</h2>
+        <br>
+
+        <p class="lead">Here, clinicians upload their challenges for developers to commit ideas! </p>
+
+        <br>
+        <p><a class="btn btn-link" href="{% url 'challenges_main' %}" role="button"  style="font-size:1rem">Explore Challenges &raquo;</a></p>
+      </div>
+      
+      <div class="col-md-7">
+       {% load static %}
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+        style="width:600px;height:350px" src="{% static "pic/programmer.jpg" %}">
+      </div>
+</div>
+
+
+<hr class="featurette-divider">
+
+
+<div class="row featurette" style="padding:2rem 0">
+      <div class="col-md-5 order-md-2">
+      {% load static %}
+        <h2 class="featurette-heading"  style="padding-top:3rem"><img src="{% static "pic/icon2.svg" %}"
+                         style="float:left;width:2.3rem;height:2.3rem; margin-right:0.5rem"/>
+        Solutions</h2>
+      <br>
+
+       <p class="lead">With CareAI PlayGround, you can have your own JupyterHub and build your solutions on that!</p>
+      
+      <br>
+      <p><a class="btn btn-link" href="{% url 'solutions_main' %}" role="button"  style="font-size:1rem">View Solutions &raquo;</a></p>
+      </div>
+      
+      <div class="col-md-7 order-md-1">
+       {% load static %}
+        <img class="img-fluid" style="width:600px;height:350px" src="{% static "pic/solution_1.jpg" %}">
+      </div>
+    </div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="row featurette" style="padding:2rem 0">
+      <div class="col-md-5">
+        {% load static %}
+        <h2 class="featurette-heading" style="padding-top:3rem"> <img src="{% static "pic/icon3.svg" %}"
+                         style="float:left;width:2.3rem;height:2.3rem; margin-right:0.5rem"/>
+        Discussion</h2>
+        <br>
+       
+        <p class="lead">Do you want to share your ideas? Do you need others' help with challenges? Do you .... Then Join the Discussion!</p>
+        
+        <br>
+        <p><a class="btn btn-link" href="{% url 'discussion_main' %}" role="button"  style="font-size:1rem">Join the Discussion &raquo;</a></p>
+      </div>
+      
+      <div class="col-md-7">
+      {% load static %}
+      <img class="img-fluid" style="width:600px;height:350px" src="{% static "pic/discussion.jpg" %}">
+      </div>
+</div>
+
+
+<hr class="featurette-divider">
+
+
+
+
+<div class="row featurette" style="padding:2rem 0">
+      <div class="col-md-5 order-md-2">
+      {% load static %}
+        <h2 class="featurette-heading"  style="padding-top:3rem"><img src="{% static "pic/icon4.svg" %}"
+                         style="float:left;width:2.3rem;height:2.3rem; margin-right:0.5rem"/>
+        Tutorial</h2>
+      <br>
+
+       <p class="lead">Stay hungry with technologies and learn more about artificial intelligence in Tutorial!</p>
+      
+      <br>
+      <p><a class="btn btn-link" href="{% url 'tutorial_main' %}" role="button"  style="font-size:1rem">Learn in Tutorial &raquo;</a></p>
+      </div>
+      
+      <div class="col-md-7 order-md-1">
+       {% load static %}
+        <img class="img-fluid" style="width:600px;height:350px" src="{% static "pic/programmer_1.jpg" %}">
+      </div>
+    </div>
+
+
+
+
+
+{% endblock %}
