@@ -41,9 +41,9 @@ Install the chart configured by the config.yaml by running this command from the
 To find the IP used to access the JupyterHub, run the following command: kubectl get service --namespace jhub.
 To use JupyterHub, enter the external IP for the proxy-public service in to a browser.
 
-## UCL COMP0016T12
+## IXN for the NHS Partnership
 
-This project was produced by the UCL IXN programme, *UCL COMP0016T12*
+This project was produced by the team *UCL COMP0016T12*
 
 ### Attributions
 * Wei Tan
