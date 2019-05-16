@@ -15,7 +15,7 @@
     {% if title %}
         <title>CareAI PlayGround - {{ title }}</title>
     {% else %}
-        <title>CareAI PlayGround</title>
+        <title>Code4Health CareAI PlayGround</title>
     {% endif %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -39,8 +39,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="border-color: #0E5F94;background-color:#0E5F94;">
     {% load static %}
     <a class="navbar-brand" style="color:#A7DCFE; font-size:16px" href="{% url 'main-page' %}">
-        <img src="{% static "pic/cloud.png" %}"
-             style="float:left;width:34px;height:26px; margin-right:0.5rem"/>
+        <h1 style="font-family: Londrina Solid; color:#f05f40">Code4Health™</h1><!--<img src="{% static "pic/cloud.png" %}"
+             style="float:left;width:34px;height:26px; margin-right:0.5rem"/>-->
         <strong>CareAI PlayGround</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,10 @@
 
 
 <footer class="basefooter">
-    <p>UCL CS Team 12</p>
+    <center><i><p style="font-size: x-small">The Apperta Foundation CIC is a limited company (registration number 09483987) </i><p></center>
+
+            <center><i><p style="font-size: x-small">Our registered address is Sunderland Software Centre, Tavistock Place, Sunderland, Tyne And Wear, England, SR1 1PB </i><p></center>
+                  <center><i><p style="font-size: x-small">Code4Health & C4H are registered Trademarks of the Apperta Foundation CIC 2018</i><p></center>
 </footer>
 
 
