@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'careai',
         "PORT": '',
         'USER': 'apperta-admin@nhs-playground',
-        'PASSWORD': 'Lkv1tjyn7GPo0dkqcwCfT1fvkSdXCXDDrzohBPesuZjPvLvfuraurrLJPotm',
+        'PASSWORD': 'public123!',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         }
