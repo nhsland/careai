@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'nhs_pg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'HOST': 'nhsplayground.database.windows.net',
-        'NAME': 'nhsplaygrounddatabase',
+        'HOST': 'nhs-playground.database.windows.net',
+        'NAME': 'careai',
         "PORT": '',
-        'USER': 'nhsplayground_admin@nhsplayground',
-        'PASSWORD': 'hello123!',
+        'USER': 'apperta-admin@nhs-playground',
+        'PASSWORD': 'Lkv1tjyn7GPo0dkqcwCfT1fvkSdXCXDDrzohBPesuZjPvLvfuraurrLJPotm',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         }
