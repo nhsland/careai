@@ -1,6 +1,6 @@
 nbconvert==5.4.1
 nbformat==4.4.0
-Django==2.1.7
+Django==3.2.20
 django-crispy-forms==1.7.2
 django-extensions==2.1.4
 Pillow==5.4.0
